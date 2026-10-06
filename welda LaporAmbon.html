@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LaporAmbon: Pengaduan Publik Kota Ambon</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f7f6;--card:#fff;--ink:#14262b;--mute:#4f666b;--line:#cfdedc;--teal:#0f6b6f;--clove:#b8322b;--tealsoft:#d9eceb;--ok:#1e7a46;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1b1e;--card:#162a2e;--ink:#e8f2f1;--mute:#9bb3b6;--line:#26424633;--line:#264246;--teal:#4fc1c4;--clove:#ff7d73;--tealsoft:#1b3a3d;--ok:#5fd18e}}
+:root[data-theme="dark"]{--bg:#0e1b1e;--card:#162a2e;--ink:#e8f2f1;--mute:#9bb3b6;--line:#264246;--teal:#4fc1c4;--clove:#ff7d73;--tealsoft:#1b3a3d;--ok:#5fd18e}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+.wrap{max-width:960px;margin:0 auto;padding:0 18px}
+header{display:flex;justify-content:space-between;align-items:center;padding:16px 0}
+.logo{font-weight:800;font-size:1.25rem;letter-spacing:-.02em}.logo b{color:var(--clove)}
+nav a{color:var(--mute);text-decoration:none;margin-left:16px;font-size:.95rem}
+nav a:hover{color:var(--teal)}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:start;padding:20px 0 36px}
+h1{font-size:clamp(2rem,6vw,3.2rem);line-height:1.05;letter-spacing:-.03em;margin:0 0 14px;font-weight:800}
+.lead{color:var(--mute);max-width:46ch;margin:0 0 16px}
+.flow{display:flex;gap:8px;flex-wrap:wrap;margin:0;padding:0;list-style:none}
+.flow li{background:var(--tealsoft);color:var(--teal);padding:4px 12px;border-radius:99px;font-size:.88rem;font-weight:600}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+.panel h2{margin:0 0 12px;font-size:1.15rem}
+label{display:block;font-size:.88rem;font-weight:600;margin:10px 0 4px}
+input,select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+textarea{min-height:84px;resize:vertical}
+:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+button{font:inherit;font-weight:700;border:0;border-radius:10px;padding:12px 16px;cursor:pointer;background:var(--clove);color:#fff;width:100%;margin-top:14px}
+button.ghost{background:var(--tealsoft);color:var(--teal);width:auto;margin:0;padding:8px 12px;font-size:.88rem}
+.msg{margin-top:12px;font-size:.92rem;color:var(--ok);font-weight:600;min-height:1.2em}
+section{padding:26px 0}
+section>h2{font-size:1.5rem;letter-spacing:-.02em;margin:0 0 4px}
+.sub{color:var(--mute);margin:0 0 16px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.stat strong{display:block;font-size:1.8rem;line-height:1.1}
+.stat span{color:var(--mute);font-size:.88rem}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.tools input{max-width:260px}
+.list{display:grid;gap:10px}
+.item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.item h3{margin:0;font-size:1rem}
+.meta{color:var(--mute);font-size:.85rem;margin:2px 0 10px}
+.steps{display:flex;gap:4px}
+.steps i{flex:1;height:6px;border-radius:3px;background:var(--line)}
+.steps i.on{background:var(--teal)}
+.badge{float:right;font-size:.8rem;font-weight:700;color:var(--teal);background:var(--tealsoft);padding:2px 10px;border-radius:99px}
+.badge.done{color:var(--ok)}
+.vote{margin-top:10px}
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.info .item p{margin:6px 0 0;color:var(--mute);font-size:.92rem}
+footer{border-top:1px solid var(--line);padding:20px 0;color:var(--mute);font-size:.88rem}
+@media (max-width:760px){.hero{grid-template-columns:1fr}.info{grid-template-columns:1fr}nav a{margin-left:10px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="logo">Lapor<b>Ambon</b></div>
+  <nav><a href="#laporan">Laporan</a><a href="#layanan">Layanan</a><a href="#dinas">Dinas</a></nav>
+</header>
+
+<div class="hero">
+  <div>
+    <h1>Lapor sekali. Pantau sampai selesai.</h1>
+    <p class="lead">Jalan rusak, sampah menumpuk, lampu jalan mati. Laporan Anda otomatis diteruskan ke dinas terkait dan statusnya bisa dilihat kapan saja.</p>
+    <ul class="flow"><li>Diterima</li><li>Diverifikasi</li><li>Diproses</li><li>Selesai</li></ul>
+  </div>
+  <div class="panel">
+    <h2>Buat laporan</h2>
+    <form id="f" onsubmit="return false">
+      <label for="judul">Judul laporan</label>
+      <input id="judul" placeholder="Contoh: Jalan berlubang depan pasar">
+      <label for="kat">Kategori</label>
+      <select id="kat">
+        <option>Jalan &amp; jembatan</option><option>Kebersihan &amp; sampah</option><option>Penerangan jalan</option><option>Air &amp; drainase</option><option>Pelayanan publik</option>
+      </select>
+      <label for="kel">Kelurahan</label>
+      <select id="kel">
+        <option>Batu Merah</option><option>Honipopu</option><option>Uritetu</option><option>Karang Panjang</option><option>Wainitu</option>
+      </select>
+      <label for="desk">Deskripsi singkat</label>
+      <textarea id="desk" placeholder="Jelaskan masalah dan lokasi patokannya"></textarea>
+      <button id="kirim" type="button">Kirim laporan</button>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+  </div>
+</div>
+
+<section id="laporan">
+  <h2>Laporan warga</h2>
+  <p class="sub">Data contoh untuk simulasi. Laporan baru yang Anda kirim muncul di sini.</p>
+  <div class="stats">
+    <div class="stat"><strong id="sTotal">0</strong><span>Total laporan</span></div>
+    <div class="stat"><strong id="sProses">0</strong><span>Sedang diproses</span></div>
+    <div class="stat"><strong id="sSelesai">0</strong><span>Selesai</span></div>
+  </div>
+  <div class="tools">
+    <input id="cari" type="search" placeholder="Cari laporan atau kelurahan" aria-label="Cari laporan">
+    <select id="filter" aria-label="Filter status" style="max-width:180px">
+      <option value="">Semua status</option><option>Diterima</option><option>Diverifikasi</option><option>Diproses</option><option>Selesai</option>
+    </select>
+  </div>
+  <div class="list" id="list"></div>
+</section>
+
+<section id="layanan">
+  <h2>Info layanan</h2>
+  <p class="sub">Syarat dan alur pengurusan dokumen, ringkas.</p>
+  <div class="info">
+    <div class="item"><h3>KTP elektronik</h3><p>Bawa KK dan surat pengantar kelurahan. Rekam data di kantor Dukcapil.</p></div>
+    <div class="item"><h3>Kartu Keluarga</h3><p>Bawa KK lama, buku nikah atau akta, dan pengantar RT/RW.</p></div>
+    <div class="item"><h3>Izin usaha mikro</h3><p>Daftar NIB lewat OSS dengan KTP dan NPWP. Prosesnya gratis.</p></div>
+  </div>
+</section>
+
+<section id="dinas">
+  <h2>Dashboard dinas</h2>
+  <p class="sub">Ringkasan jumlah laporan per kategori untuk bahan keputusan.</p>
+  <div class="panel" id="bars"></div>
+</section>
+
+<footer>LaporAmbon adalah prototipe tugas kuliah. Semua data di halaman ini adalah contoh.</footer>
+</div>
+
+<script>
+var ST=["Diterima","Diverifikasi","Diproses","Selesai"];
+var data=[
+ {j:"Jalan berlubang di depan pasar",k:"Jalan & jembatan",l:"Batu Merah",s:2,v:14},
+ {j:"Sampah menumpuk di pinggir kali",k:"Kebersihan & sampah",l:"Honipopu",s:1,v:9},
+ {j:"Lampu jalan mati di tikungan",k:"Penerangan jalan",l:"Uritetu",s:3,v:6},
+ {j:"Selokan tersumbat saat hujan",k:"Air & drainase",l:"Karang Panjang",s:0,v:11},
+ {j:"Antrean layanan KTP terlalu lama",k:"Pelayanan publik",l:"Wainitu",s:2,v:5}
+];
+function $(i){return document.getElementById(i)}
+function esc(t){var d=document.createElement("div");d.textContent=t;return d.innerHTML}
+function render(){
+  var q=$("cari").value.toLowerCase(),f=$("filter").value,h="";
+  data.forEach(function(d,i){
+    if(f&&ST[d.s]!==f)return;
+    if(q&&(d.j+d.l).toLowerCase().indexOf(q)<0)return;
+    var bars="";for(var n=0;n<4;n++)bars+='<i class="'+(n<=d.s?"on":"")+'"></i>';
+    h+='<div class="item"><span class="badge'+(d.s===3?" done":"")+'">'+ST[d.s]+'</span><h3>'+esc(d.j)+'</h3><div class="meta">'+esc(d.k)+' &middot; '+esc(d.l)+'</div><div class="steps" aria-label="Tahap '+ST[d.s]+'">'+bars+'</div><div class="vote"><button class="ghost" onclick="vote('+i+')">Dukung laporan ('+d.v+')</button></div></div>';
+  });
+  $("list").innerHTML=h||'<div class="item">Tidak ada laporan yang cocok. Ubah kata kunci atau filter status.</div>';
+  $("sTotal").textContent=data.length;
+  $("sProses").textContent=data.filter(function(d){return d.s===2}).length;
+  $("sSelesai").textContent=data.filter(function(d){return d.s===3}).length;
+  var c={};data.forEach(function(d){c[d.k]=(c[d.k]||0)+1});
+  var mx=Math.max.apply(null,Object.keys(c).map(function(k){return c[k]}));
+  $("bars").innerHTML=Object.keys(c).map(function(k){
+    return '<div style="margin:8px 0"><div style="display:flex;justify-content:space-between;font-size:.9rem"><span>'+esc(k)+'</span><b>'+c[k]+'</b></div><div style="height:8px;border-radius:4px;background:var(--line)"><div style="height:8px;border-radius:4px;background:var(--teal);width:'+(c[k]/mx*100)+'%"></div></div></div>';
+  }).join("");
+}
+function vote(i){data[i].v++;render()}
+$("kirim").onclick=function(){
+  var j=$("judul").value.trim(),d=$("desk").value.trim();
+  if(!j||!d){$("msg").style.color="var(--clove)";$("msg").textContent="Isi judul dan deskripsi dulu.";return}
+  data.unshift({j:j,k:$("kat").value,l:$("kel").value,s:0,v:1});
+  $("judul").value="";$("desk").value="";
+  $("msg").style.color="var(--ok)";$("msg").textContent="Laporan terkirim. Status: Diterima.";
+  render();
+};
+$("cari").oninput=render;$("filter").onchange=render;
+render();
+</script>
+</body>
+</html>
